@@ -26,3 +26,18 @@ def R2(x, y, a, b):
         f = f + (y[i] - av_y)**2
     return 1 - e / f
 
+
+import numpy as np
+import matplotlib.pyplot as plt
+import sys
+import os
+def draw_graph(x, y, a, b, title, file_name):
+    plt.title(title)
+    x = np.array(x)
+    y = np.array(y)
+    plt.plot(x, y, 'o')
+    plt.plot(x, a * x + b, 'r')
+    # sauvegarder dans un fichier
+    plt.savefig(file_name)
+    plt.close()
+    print(f"\nGraph saved in {file_name}")

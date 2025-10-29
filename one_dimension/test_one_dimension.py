@@ -1,10 +1,7 @@
 import numpy as np
-from one_dimension import average, a_b_linear_regression1, R2, linear_function
+from one_dimension import average, a_b_linear_regression1, R2, linear_function, draw_graph
 import sys
 import os
-
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'graph_tools'))
-from graph import draw_graph
 
 
 if __name__ == '__main__':
@@ -18,8 +15,9 @@ if __name__ == '__main__':
     print(f"    x = {x} and y = {y}")
     a, b = a_b_linear_regression1(x, y)
     print(f"    a = {a} and b = {b}")
-    draw_graph(x, y, a, b, "linear regression for aligned points")
-    print(f"    R2 = {R2(x, y, a, b)}")
+    print(f"    R2 = {R2(x, y, a, b)}\n")
+    draw_graph(x, y, a, b, "linear regression for aligned points",
+     "one_dimension/graph/graph_for_aligned_points")
 
     # random points
     print("\n 2. random points :")
@@ -28,5 +26,7 @@ if __name__ == '__main__':
     print(f"    x = {x} and y = {y}")
     a, b = a_b_linear_regression1(x, y)
     print(f"    a = {a} and b = {b}")
-    draw_graph(x, y, a, b, "linear regression for non aligned points")
-    print(f"    R2 = {R2(x, y, a, b)}\n\n")
+    print(f"    R2 = {R2(x, y, a, b)}\n")
+    draw_graph(x, y, a, b, "linear regression for non aligned points",
+     "one_dimension/graph/graph_for_non_aligned_points")
+    print("\n")

@@ -2,8 +2,6 @@ from general_case import linear_regression
 import numpy as np
 import sys
 import os
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'graph_tools'))
-#from graph import draw_graph_g
 import matplotlib.pyplot as plt
 
 

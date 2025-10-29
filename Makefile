@@ -4,11 +4,14 @@ one_dimension_test:
 general_case_test:
 	python3 general_case/test_general_case.py
 
-all: one_dimension general_case
+hooke_law_experience:
+	python3 applications/physics/hooke_law_experience.py
+
+
+all: one_dimension_test general_case_test hooke_law_experience
 
 clean:
-	rm -rf one_dimension/__pycache__/
-	rm -rf general_case/__pycache__/
-	rm -rf graph_tools/__pycache__/
+	rm -rf one_dimension/__pycache__/ one_dimension/graph/graph_for_*.png
+	rm -rf general_case/__pycache__/ general_case/graph/graph_for_*.png	
 
-test: one_dimension general_case
+.PHONY: one_dimension_test general_case_test
