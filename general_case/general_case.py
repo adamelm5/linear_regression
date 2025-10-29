@@ -1,21 +1,19 @@
 import numpy as np
 
-# Function that computes the linear regression of a set of points
-def linear_regression(X, Y):
+def linear_regression(X, Y, add_intercept=True):
+    X = np.asarray(X, dtype=float)
+    Y = np.asarray(Y, dtype=float).reshape(-1, 1)
 
-    XtX = X.T @ X
-    XtY = X.T @ Y
+    if add_intercept:
+        X = np.hstack((np.ones((X.shape[0], 1)), X))
 
-    if np.linalg.det(XtX) == 0:
-        beta_hat = np.linalg.pinv(XtX) @ XtY
-    else:
-        beta_hat = np.linalg.inv(XtX) @ XtY
+    beta_hat = np.linalg.pinv(X.T @ X) @ X.T @ Y
 
-    residus = Y - X @ beta_hat
-    SS_res = float(residus.T @ +residus)
-    Y_mean = np.mean(Y)
-    SS_tot = float((Y - Y_mean).T @ (Y - Y_mean))
-    
-    R2 = 1 - (SS_res / SS_tot)
-    
+    Y_pred = X @ beta_hat
+    residus = Y - Y_pred
+
+    SS_res = float(residus.T @ residus)
+    SS_tot = float(((Y - np.mean(Y))**2).sum())
+    R2 = 1 - SS_res / SS_tot
+
     return beta_hat, R2
