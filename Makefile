@@ -11,7 +11,7 @@ viscosity_experience:
 	python3 applications/physics/viscosity_experience.py
 
 
-all: one_dimension_test general_case_test hooke_law_experience
+all: one_dimension_test general_case_test hooke_law_experience viscosity_experience
 
 clean:
 	rm -rf one_dimension/__pycache__/ one_dimension/graph/graph_for_*.png
